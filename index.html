@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevMind AI — A IA para programadores, criadores e equipas modernas</title>
+  <meta name="description" content="Landing page premium da DevMind AI, uma inteligência artificial focada em programação, automação, estratégia e produtividade." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050711;
+      --bg-2: #090d1f;
+      --card: rgba(255,255,255,0.075);
+      --card-2: rgba(255,255,255,0.105);
+      --border: rgba(255,255,255,0.14);
+      --text: #f6f8ff;
+      --muted: #aab3d4;
+      --muted-2: #7984a9;
+      --primary: #8b5cf6;
+      --primary-2: #00e5ff;
+      --primary-3: #22c55e;
+      --danger: #fb7185;
+      --warning: #fbbf24;
+      --shadow: 0 30px 100px rgba(0,0,0,0.45);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 5%, rgba(139,92,246,0.30), transparent 35%),
+        radial-gradient(circle at 85% 10%, rgba(0,229,255,0.22), transparent 36%),
+        radial-gradient(circle at 50% 90%, rgba(34,197,94,0.14), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 80%);
+      z-index: -2;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(var(--max), calc(100% - 30px));
+      height: 72px;
+      border: 1px solid var(--border);
+      background: rgba(5,7,17,0.68);
+      backdrop-filter: blur(20px);
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px 0 24px;
+      z-index: 1000;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      font-size: 1.15rem;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background:
+        radial-gradient(circle at 30% 20%, #fff, transparent 18%),
+        linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #050711;
+      box-shadow: 0 0 35px rgba(0,229,255,0.34);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 16px;
+      background: rgba(255,255,255,0.6);
+      transform: rotate(-35deg);
+      animation: shine 4s infinite;
+    }
+
+    @keyframes shine {
+      0%, 42% { transform: translateX(-95px) rotate(-35deg); }
+      58%, 100% { transform: translateX(95px) rotate(-35deg); }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 18px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #040816;
+      background: linear-gradient(135deg, #fff, #c9f8ff 35%, #b39cff 100%);
+      box-shadow: 0 14px 40px rgba(0,229,255,0.22);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 18px 60px rgba(139,92,246,0.32);
+    }
+
+    .btn-ghost {
+      color: var(--text);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+    }
+
+    .menu-btn {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 1.1rem;
+    }
+
+    .hero {
+      position: relative;
+      padding-top: 172px;
+      padding-bottom: 92px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      width: max-content;
+      max-width: 100%;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #dce8ff;
+      font-weight: 800;
+      font-size: 0.88rem;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.08);
+      padding: 9px 13px;
+      border-radius: 999px;
+      backdrop-filter: blur(16px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    .pulse-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--primary-3);
+      box-shadow: 0 0 0 0 rgba(34,197,94,0.7);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 12px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+
+    h1 {
+      margin-top: 22px;
+      font-size: clamp(3.1rem, 7vw, 6.8rem);
+      line-height: 0.93;
+      letter-spacing: -0.09em;
+      font-weight: 950;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #fff 0%, #d7e0ff 24%, #8b5cf6 52%, #00e5ff 85%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      margin-top: 24px;
+      max-width: 670px;
+      color: var(--muted);
+      font-size: 1.12rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      margin-top: 34px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .trust-row {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--muted-2);
+      font-size: 0.92rem;
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+
+    .avatar-stack {
+      display: flex;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 2px solid var(--bg);
+      margin-left: -8px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      display: grid;
+      place-items: center;
+      font-size: 0.8rem;
+      font-weight: 900;
+      color: #06101b;
+    }
+
+    .avatar:first-child {
+      margin-left: 0;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 620px;
+      perspective: 1200px;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(1px);
+      opacity: 0.9;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .orb.one {
+      width: 110px;
+      height: 110px;
+      top: 26px;
+      right: 20px;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--primary-2) 25%, transparent 70%);
+    }
+
+    .orb.two {
+      width: 72px;
+      height: 72px;
+      left: 30px;
+      bottom: 100px;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--primary) 30%, transparent 70%);
+      animation-delay: -2s;
+    }
+
+    .orb.three {
+      width: 46px;
+      height: 46px;
+      right: 90px;
+      bottom: 20px;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--primary-3) 30%, transparent 70%);
+      animation-delay: -3s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-22px); }
+    }
+
+    .dashboard {
+      position: absolute;
+      inset: 60px 0 0 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.045)),
+        rgba(7,11,28,0.72);
+      backdrop-filter: blur(24px);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.14);
+      overflow: hidden;
+      transform: rotateY(-10deg) rotateX(4deg);
+      animation: cardEnter 1s ease both;
+    }
+
+    @keyframes cardEnter {
+      from { opacity: 0; transform: rotateY(-16deg) rotateX(8deg) translateY(30px); }
+      to { opacity: 1; transform: rotateY(-10deg) rotateX(4deg) translateY(0); }
+    }
+
+    .dashboard-top {
+      height: 70px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .window-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.22);
+    }
+
+    .window-dots span:nth-child(1) { background: #fb7185; }
+    .window-dots span:nth-child(2) { background: #fbbf24; }
+    .window-dots span:nth-child(3) { background: #22c55e; }
+
+    .status-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #ccfbf1;
+      background: rgba(20,184,166,0.12);
+      border: 1px solid rgba(94,234,212,0.2);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .dashboard-body {
+      display: grid;
+      grid-template-columns: 1fr 0.74fr;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .code-panel, .insight-panel, .mini-card, .ai-message {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.055);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .code-panel {
+      padding: 18px;
+      min-height: 320px;
+      overflow: hidden;
+    }
+
+    .code-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      font-size: 0.86rem;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .code-line {
+      display: flex;
+      gap: 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #cdd6ff;
+      font-size: 0.84rem;
+      line-height: 1.86;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: revealLine 0.45s ease forwards;
+    }
+
+    .code-line:nth-child(2) { animation-delay: 0.1s; }
+    .code-line:nth-child(3) { animation-delay: 0.2s; }
+    .code-line:nth-child(4) { animation-delay: 0.3s; }
+    .code-line:nth-child(5) { animation-delay: 0.4s; }
+    .code-line:nth-child(6) { animation-delay: 0.5s; }
+    .code-line:nth-child(7) { animation-delay: 0.6s; }
+    .code-line:nth-child(8) { animation-delay: 0.7s; }
+    .code-line:nth-child(9) { animation-delay: 0.8s; }
+    .code-line:nth-child(10) { animation-delay: 0.9s; }
+
+    @keyframes revealLine {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .num {
+      color: rgba(255,255,255,0.28);
+      user-select: none;
+      width: 22px;
+      text-align: right;
+    }
+
+    .purple { color: #c4b5fd; }
+    .cyan { color: #67e8f9; }
+    .green { color: #86efac; }
+    .pink { color: #f9a8d4; }
+    .yellow { color: #fde68a; }
+
+    .side-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .insight-panel {
+      padding: 18px;
+      min-height: 170px;
+    }
+
+    .ring {
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      margin: 10px auto 14px;
+      background:
+        conic-gradient(var(--primary-2) 0 78%, rgba(255,255,255,0.09) 78% 100%);
+      display: grid;
+      place-items: center;
+      position: relative;
+      animation: rotateSlow 8s linear infinite;
+    }
+
+    .ring::before {
+      content: "";
+      position: absolute;
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      background: #0b1027;
+      border: 1px solid var(--border);
+    }
+
+    .ring span {
+      position: relative;
+      z-index: 2;
+      font-weight: 950;
+      font-size: 1.45rem;
+      color: white;
+      animation: reverseRotate 8s linear infinite;
+    }
+
+    @keyframes rotateSlow {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes reverseRotate {
+      to { transform: rotate(-360deg); }
+    }
+
+    .panel-title {
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .panel-copy {
+      margin-top: 8px;
+      color: var(--text);
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .mini-card {
+      padding: 17px;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 1.25rem;
+    }
+
+    .mini-card p {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.88rem;
+    }
+
+    .ai-message {
+      position: absolute;
+      left: -20px;
+      bottom: 50px;
+      width: min(360px, 72vw);
+      padding: 18px;
+      background:
+        linear-gradient(135deg, rgba(139,92,246,0.28), rgba(0,229,255,0.13)),
+        rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      animation: float 5s ease-in-out infinite;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+    }
+
+    .ai-message h4 {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 9px;
+      font-size: 0.95rem;
+    }
+
+    .ai-message p {
+      color: #d8def8;
+      line-height: 1.55;
+      font-size: 0.92rem;
+    }
+
+    .logos {
+      padding: 10px 0 70px;
+    }
+
+    .logo-strip {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.055);
+      padding: 22px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .logo-strip::before, .logo-strip::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 80px;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .logo-strip::before {
+      left: 0;
+      background: linear-gradient(90deg, #080c1d, transparent);
+    }
+
+    .logo-strip::after {
+      right: 0;
+      background: linear-gradient(-90deg, #080c1d, transparent);
+    }
+
+    .marquee {
+      display: flex;
+      width: max-content;
+      gap: 18px;
+      animation: marquee 24s linear infinite;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .logo-pill {
+      min-width: 180px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 12px 18px;
+      color: var(--muted);
+      font-weight: 900;
+      text-align: center;
+      background: rgba(255,255,255,0.045);
+    }
+
+    section {
+      padding: 86px 0;
+      position: relative;
+    }
+
+    .section-head {
+      text-align: center;
+      width: min(760px, 100%);
+      margin: 0 auto 46px;
+    }
+
+    .section-kicker {
+      color: var(--primary-2);
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      font-weight: 950;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(2.25rem, 4vw, 4.3rem);
+      line-height: 1;
+      letter-spacing: -0.07em;
+      font-weight: 950;
+    }
+
+    .section-copy {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.75;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.095), rgba(255,255,255,0.035));
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      min-height: 280px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+    }
+
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(0,229,255,0.22), transparent 35%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(0,229,255,0.38);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.13), rgba(255,255,255,0.045));
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(139,92,246,0.8), rgba(0,229,255,0.75));
+      box-shadow: 0 14px 40px rgba(139,92,246,0.24);
+      font-size: 1.35rem;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      line-height: 1.72;
+      position: relative;
+      z-index: 2;
+    }
+
+    .feature-card.big {
+      grid-column: span 2;
+      min-height: 310px;
+    }
+
+    .terminal-preview {
+      margin-top: 22px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(0,0,0,0.28);
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+    }
+
+    .terminal-bar {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+      padding: 0 14px;
+    }
+
+    .terminal-bar span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .terminal-body {
+      padding: 16px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #d7e1ff;
+      font-size: 0.86rem;
+      line-height: 1.8;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .flow-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.105), rgba(255,255,255,0.04));
+      padding: 30px;
+      overflow: hidden;
+    }
+
+    .flow-card h3 {
+      font-size: 2rem;
+      letter-spacing: -0.055em;
+      margin-bottom: 16px;
+    }
+
+    .flow-card p {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .workflow-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .workflow-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.055);
+    }
+
+    .workflow-num {
+      flex: 0 0 34px;
+      height: 34px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #05101c;
+      background: linear-gradient(135deg, #fff, var(--primary-2));
+      font-weight: 950;
+    }
+
+    .workflow-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .workflow-item span {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.92rem;
+    }
+
+    .demo-card {
+      position: relative;
+      min-height: 560px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 18px;
+    }
+
+    .prompt {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .prompt label {
+      display: block;
+      color: var(--muted-2);
+      font-weight: 800;
+      font-size: 0.82rem;
+      margin-bottom: 8px;
+    }
+
+    .prompt div {
+      color: #eef4ff;
+      line-height: 1.55;
+    }
+
+    .brain {
+      position: relative;
+      min-height: 280px;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(139,92,246,0.34), transparent 28%),
+        radial-gradient(circle at 30% 30%, rgba(0,229,255,0.2), transparent 26%),
+        rgba(0,0,0,0.18);
+    }
+
+    .brain::before {
+      content: "";
+      position: absolute;
+      inset: 26px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 50%;
+      animation: spin 12s linear infinite;
+    }
+
+    .brain::after {
+      content: "";
+      position: absolute;
+      inset: 58px;
+      border: 1px dashed rgba(0,229,255,0.22);
+      border-radius: 50%;
+      animation: spin 7s linear infinite reverse;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .node {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border-radius: 999px;
+      background: #fff;
+      box-shadow: 0 0 28px rgba(0,229,255,0.9);
+      animation: nodePulse 2s infinite;
+    }
+
+    @keyframes nodePulse {
+      50% { transform: scale(1.45); opacity: 0.65; }
+    }
+
+    .node:nth-child(1) { top: 22%; left: 25%; }
+    .node:nth-child(2) { top: 35%; right: 20%; animation-delay: -0.4s; }
+    .node:nth-child(3) { bottom: 22%; left: 35%; animation-delay: -0.8s; }
+    .node:nth-child(4) { bottom: 31%; right: 30%; animation-delay: -1.2s; }
+
+    .brain-title {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .brain-title strong {
+      display: block;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      letter-spacing: -0.08em;
+      margin-bottom: 8px;
+    }
+
+    .brain-title span {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .result-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .result-mini {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 16px;
+      background: rgba(255,255,255,0.055);
+    }
+
+    .result-mini strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+    }
+
+    .result-mini span {
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+
+    .comparison-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.095), rgba(255,255,255,0.035));
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      min-width: 880px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
+      vertical-align: middle;
+    }
+
+    th {
+      color: var(--text);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: rgba(255,255,255,0.045);
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    td:first-child {
+      color: var(--text);
+      font-weight: 850;
+    }
+
+    .devmind-col {
+      color: #ecfeff;
+      background: linear-gradient(90deg, rgba(0,229,255,0.11), rgba(139,92,246,0.07));
+      border-left: 1px solid rgba(0,229,255,0.18);
+      border-right: 1px solid rgba(0,229,255,0.18);
+      font-weight: 800;
+    }
+
+    .check, .minus, .star {
+      display: inline-grid;
+      place-items: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 999px;
+      margin-right: 8px;
+      font-size: 0.83rem;
+      font-weight: 950;
+    }
+
+    .check {
+      color: #032014;
+      background: #86efac;
+    }
+
+    .minus {
+      color: #111827;
+      background: #cbd5e1;
+    }
+
+    .star {
+      color: #231503;
+      background: #fde68a;
+    }
+
+    .note {
+      margin-top: 18px;
+      color: var(--muted-2);
+      font-size: 0.92rem;
+      line-height: 1.65;
+      text-align: center;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.095), rgba(255,255,255,0.035));
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: 0.35s ease;
+    }
+
+    .price-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0,229,255,0.34);
+    }
+
+    .price-card.featured {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(0,229,255,0.22), transparent 36%),
+        linear-gradient(180deg, rgba(139,92,246,0.19), rgba(255,255,255,0.045));
+      border-color: rgba(0,229,255,0.3);
+      box-shadow: 0 30px 80px rgba(0,229,255,0.1);
+    }
+
+    .popular {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 950;
+      color: #06101c;
+      background: linear-gradient(135deg, #fff, var(--primary-2));
+    }
+
+    .price-card h3 {
+      font-size: 1.32rem;
+      margin-bottom: 10px;
+    }
+
+    .price-card p {
+      color: var(--muted);
+      line-height: 1.55;
+      min-height: 50px;
+    }
+
+    .price {
+      margin: 24px 0;
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .price strong {
+      font-size: 3rem;
+      letter-spacing: -0.08em;
+    }
+
+    .price span {
+      color: var(--muted-2);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .benefits {
+      list-style: none;
+      display: grid;
+      gap: 13px;
+      margin: 22px 0 28px;
+      color: var(--muted);
+    }
+
+    .benefits li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      line-height: 1.45;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .quote {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.06);
+      padding: 24px;
+    }
+
+    .quote p {
+      color: #d9e2ff;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .quote-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .quote-author .avatar {
+      margin: 0;
+    }
+
+    .quote-author strong {
+      display: block;
+    }
+
+    .quote-author span {
+      color: var(--muted-2);
+      font-size: 0.86rem;
+    }
+
+    .faq-grid {
+      width: min(900px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: 13px;
+    }
+
+    details {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.055);
+      padding: 0 20px;
+      overflow: hidden;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 20px 0;
+      font-weight: 850;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      font-size: 1.4rem;
+      color: var(--primary-2);
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    details p {
+      color: var(--muted);
+      line-height: 1.7;
+      padding-bottom: 20px;
+    }
+
+    .cta {
+      padding-bottom: 120px;
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 42px;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,0.19), transparent 18%),
+        radial-gradient(circle at 80% 10%, rgba(0,229,255,0.24), transparent 25%),
+        linear-gradient(135deg, rgba(139,92,246,0.36), rgba(0,229,255,0.12)),
+        rgba(255,255,255,0.07);
+      padding: 58px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .cta-box::before {
+      content: "";
+      position: absolute;
+      inset: -50%;
+      background: conic-gradient(transparent, rgba(255,255,255,0.12), transparent 30%);
+      animation: spin 10s linear infinite;
+      pointer-events: none;
+    }
+
+    .cta-box > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-box h2 {
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      line-height: 0.97;
+      letter-spacing: -0.08em;
+      margin-bottom: 18px;
+    }
+
+    .cta-box p {
+      width: min(720px, 100%);
+      margin: 0 auto 30px;
+      color: #d8e2ff;
+      line-height: 1.75;
+      font-size: 1.06rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: rgba(0,0,0,0.18);
+      padding: 34px 0;
+      color: var(--muted-2);
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: 0.7s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cursor-glow {
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(0,229,255,0.12), transparent 60%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 980px) {
+      .nav {
+        height: auto;
+        min-height: 68px;
+        border-radius: 28px;
+        align-items: flex-start;
+        padding: 14px;
+      }
+
+      .brand {
+        padding: 2px 0 0 4px;
+      }
+
+      .nav-links, .nav-actions {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+        margin-left: auto;
+      }
+
+      .nav.open {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 14px;
+      }
+
+      .nav.open .nav-links,
+      .nav.open .nav-actions {
+        grid-column: 1 / -1;
+        display: grid;
+        gap: 12px;
+      }
+
+      .nav.open .nav-links a {
+        padding: 10px 12px;
+        border-radius: 14px;
+        background: rgba(255,255,255,0.055);
+      }
+
+      .hero-grid, .flow {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 620px;
+      }
+
+      .dashboard {
+        transform: none;
+      }
+
+      .features-grid,
+      .pricing-grid,
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card.big {
+        grid-column: auto;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .hero {
+        padding-top: 136px;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 16vw, 4.8rem);
+      }
+
+      .hero-visual {
+        min-height: 730px;
+      }
+
+      .dashboard-body {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard {
+        inset: 40px 0 0 0;
+      }
+
+      .ai-message {
+        left: 14px;
+        bottom: 8px;
+      }
+
+      .result-row {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-box {
+        padding: 36px 20px;
+        border-radius: 30px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-actions {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="noise"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <nav class="nav" id="nav">
+    <a href="#inicio" class="brand" aria-label="DevMind AI">
+      <span class="brand-mark">DM</span>
+      <span>DevMind</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#features">Funcionalidades</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#comparacao">Comparação</a>
+      <a href="#precos">Preços</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <div class="nav-actions">
+      <a href="#demo" class="btn btn-ghost">Ver demo</a>
+      <a href="#precos" class="btn btn-primary">Começar agora</a>
+    </div>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+  </nav>
+
+  <main>
+    <header class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="eyebrow">
+            <span class="pulse-dot"></span>
+            IA premium para construir, automatizar e lançar mais rápido
+          </div>
+
+          <h1>
+            A mente artificial para <span class="gradient-text">developers ambiciosos.</span>
+          </h1>
+
+          <p class="hero-copy">
+            DevMind é uma inteligência artificial criada para transformar ideias em código,
+            estratégias em sistemas e tarefas repetitivas em automações inteligentes.
+            Perfeita para programadores, startups, criadores digitais e equipas que querem produzir com velocidade profissional.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#precos" class="btn btn-primary">Experimentar DevMind ✨</a>
+            <a href="#comparacao" class="btn btn-ghost">Comparar com outras IAs</a>
+          </div>
+
+          <div class="trust-row">
+            <div class="avatar-stack" aria-hidden="true">
+              <span class="avatar">RD</span>
+              <span class="avatar">AI</span>
+              <span class="avatar">UX</span>
+              <span class="avatar">JS</span>
+            </div>
+            <span>Projetada para código, produtividade, marketing, análise e lançamento de produtos.</span>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" id="demo">
+          <div class="orb one"></div>
+          <div class="orb two"></div>
+          <div class="orb three"></div>
+
+          <div class="dashboard">
+            <div class="dashboard-top">
+              <div class="window-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="status-pill">
+                <span class="pulse-dot"></span>
+                DevMind Core Online
+              </div>
+            </div>
+
+            <div class="dashboard-body">
+              <div class="code-panel">
+                <div class="code-title">
+                  <span>devmind.agent.ts</span>
+                  <span>AI Build Mode</span>
+                </div>
+
+                <div class="code-line"><span class="num">01</span><span><span class="purple">const</span> app = <span class="cyan">DevMind</span>.create();</span></div>
+                <div class="code-line"><span class="num">02</span><span>app.<span class="green">understand</span>(<span class="yellow">"minha ideia"</span>);</span></div>
+                <div class="code-line"><span class="num">03</span><span>app.<span class="green">generate</span>({</span></div>
+                <div class="code-line"><span class="num">04</span><span>&nbsp;&nbsp;frontend: <span class="yellow">"premium UI"</span>,</span></div>
+                <div class="code-line"><span class="num">05</span><span>&nbsp;&nbsp;backend: <span class="yellow">"secure API"</span>,</span></div>
+                <div class="code-line"><span class="num">06</span><span>&nbsp;&nbsp;copy: <span class="yellow">"high converting"</span></span></div>
+                <div class="code-line"><span class="num">07</span><span>});</span></div>
+                <div class="code-line"><span class="num">08</span><span><span class="pink">await</span> app.<span class="green">optimize</span>();</span></div>
+                <div class="code-line"><span class="num">09</span><span><span class="pink">return</span> <span class="cyan">launch</span>(<span class="yellow">"faster"</span>);</span></div>
+              </div>
+
+              <div class="side-stack">
+                <div class="insight-panel">
+                  <div class="panel-title">Produtividade estimada</div>
+                  <div class="ring"><span>78%</span></div>
+                  <div class="panel-copy">Menos tempo em tarefas repetitivas.</div>
+                </div>
+
+                <div class="mini-card">
+                  <strong>12x</strong>
+                  <p>Ideias, prompts, planos técnicos, landing pages e automações criadas com contexto.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-message">
+            <h4>⚡ DevMind Suggestion</h4>
+            <p>"Transformei o teu conceito numa landing page, funil de vendas, backend inicial e plano de lançamento."</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="logos">
+      <div class="container">
+        <div class="logo-strip reveal">
+          <div class="marquee">
+            <span class="logo-pill">AI Coding</span>
+            <span class="logo-pill">Automation</span>
+            <span class="logo-pill">Marketing</span>
+            <span class="logo-pill">No-Code</span>
+            <span class="logo-pill">Startups</span>
+            <span class="logo-pill">Productivity</span>
+            <span class="logo-pill">Prompt OS</span>
+            <span class="logo-pill">AI Coding</span>
+            <span class="logo-pill">Automation</span>
+            <span class="logo-pill">Marketing</span>
+            <span class="logo-pill">No-Code</span>
+            <span class="logo-pill">Startups</span>
+            <span class="logo-pill">Productivity</span>
+            <span class="logo-pill">Prompt OS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="features">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">Funcionalidades premium</div>
+          <h2 class="section-title">Tudo o que uma IA moderna precisa para parecer impossível.</h2>
+          <p class="section-copy">
+            A DevMind junta raciocínio técnico, copywriting, estratégia e automação num único ambiente pensado para criar produtos reais.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card big reveal">
+            <div class="feature-icon">🧠</div>
+            <h3>Modo Arquiteto de Software</h3>
+            <p>
+              Desenha bases de dados, APIs, fluxos de autenticação, dashboards, aplicações web e mobile com estrutura clara antes de escrever código.
+            </p>
+
+            <div class="terminal-preview">
+              <div class="terminal-bar"><span></span><span></span><span></span></div>
+              <div class="terminal-body">
+                <div>&gt; criar app SaaS para gestão financeira</div>
+                <div class="cyan">✓ módulos identificados</div>
+                <div class="green">✓ stack sugerida: React + Node + PostgreSQL</div>
+                <div class="purple">✓ plano técnico pronto para desenvolvimento</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">⚙️</div>
+            <h3>Automação Inteligente</h3>
+            <p>
+              Cria scripts, integrações, bots, fluxos de e-mail, respostas automáticas e sistemas internos para poupar horas de trabalho.
+            </p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">🚀</div>
+            <h3>Launch Assistant</h3>
+            <p>
+              Gera nomes, posicionamento, copy, páginas de venda, anúncios, e-mails e planos para lançar uma ideia com impacto.
+            </p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">🔐</div>
+            <h3>Revisão de Segurança</h3>
+            <p>
+              Ajuda a encontrar más práticas, falhas comuns, validações ausentes e zonas do código que precisam de mais proteção.
+            </p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">🎨</div>
+            <h3>UI Premium Generator</h3>
+            <p>
+              Cria layouts modernos, componentes responsivos, microinterações e páginas com estética de startup internacional.
+            </p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">📊</div>
+            <h3>Business Brain</h3>
+            <p>
+              Analisa ideias de negócio, cria planos de monetização, identifica públicos-alvo e sugere melhorias para aumentar conversões.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="container flow">
+        <div class="flow-card reveal">
+          <div class="section-kicker">Workflow</div>
+          <h3>De uma frase para um produto completo.</h3>
+          <p>
+            A DevMind foi pensada para não responder apenas com texto. Ela organiza a tua ideia,
+            divide por etapas e entrega um caminho claro para desenvolvimento, design, marketing e crescimento.
+          </p>
+
+          <div class="workflow-list">
+            <div class="workflow-item">
+              <div class="workflow-num">1</div>
+              <div>
+                <strong>Explica a ideia</strong>
+                <span>Diz o que queres criar, mesmo sem saber a stack ou o design.</span>
+              </div>
+            </div>
+
+            <div class="workflow-item">
+              <div class="workflow-num">2</div>
+              <div>
+                <strong>Recebe a estrutura</strong>
+                <span>A IA cria arquitetura, funcionalidades, jornada do utilizador e plano técnico.</span>
+              </div>
+            </div>
+
+            <div class="workflow-item">
+              <div class="workflow-num">3</div>
+              <div>
+                <strong>Constrói e melhora</strong>
+                <span>Gera código, páginas, prompts, textos, automações e melhorias contínuas.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-card demo-card reveal">
+          <div class="prompt">
+            <label>Prompt do utilizador</label>
+            <div>"Cria uma IA para programadores com landing page premium, comparação com concorrentes e sistema de preços."</div>
+          </div>
+
+          <div class="brain">
+            <span class="node"></span>
+            <span class="node"></span>
+            <span class="node"></span>
+            <span class="node"></span>
+            <div class="brain-title">
+              <div>
+                <strong>DevMind</strong>
+                <span>Analisa • Planeia • Cria • Otimiza</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-row">
+            <div class="result-mini">
+              <strong>UI</strong>
+              <span>Interface moderna e responsiva.</span>
+            </div>
+            <div class="result-mini">
+              <strong>Code</strong>
+              <span>Estrutura pronta para evoluir.</span>
+            </div>
+            <div class="result-mini">
+              <strong>Sales</strong>
+              <span>Copy focada em conversão.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="comparacao">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">Comparação</div>
+          <h2 class="section-title">DevMind contra IAs superfortes.</h2>
+          <p class="section-copy">
+            Esta tabela é uma comparação de posicionamento de produto. Usa-a como marketing inicial e ajusta com dados reais quando a DevMind estiver em produção.
+          </p>
+        </div>
+
+        <div class="comparison-wrap reveal">
+          <table>
+            <thead>
+              <tr>
+                <th>Critério</th>
+                <th class="devmind-col">DevMind</th>
+                <th>ChatGPT</th>
+                <th>Claude</th>
+                <th>Gemini</th>
+                <th>Copilot</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Foco principal</td>
+                <td class="devmind-col"><span class="star">★</span>Programação + produto + lançamento</td>
+                <td>IA generalista muito versátil</td>
+                <td>Escrita, análise e raciocínio</td>
+                <td>Ecossistema Google e multimodal</td>
+                <td>Assistência ao código</td>
+              </tr>
+              <tr>
+                <td>Criação de landing pages</td>
+                <td class="devmind-col"><span class="check">✓</span>Templates premium orientados a conversão</td>
+                <td><span class="check">✓</span>Boa criação com prompts certos</td>
+                <td><span class="check">✓</span>Boa copy e estrutura</td>
+                <td><span class="check">✓</span>Boa assistência visual/textual</td>
+                <td><span class="minus">–</span>Mais focado em código</td>
+              </tr>
+              <tr>
+                <td>Modo empreendedor</td>
+                <td class="devmind-col"><span class="check">✓</span>Ideia, funil, produto, preço e lançamento</td>
+                <td><span class="check">✓</span>Forte com instruções detalhadas</td>
+                <td><span class="check">✓</span>Forte em estratégia textual</td>
+                <td><span class="check">✓</span>Bom para pesquisa e organização</td>
+                <td><span class="minus">–</span>Não é o foco principal</td>
+              </tr>
+              <tr>
+                <td>Assistência para developers</td>
+                <td class="devmind-col"><span class="check">✓</span>Arquitetura, código, UI e documentação</td>
+                <td><span class="check">✓</span>Muito forte e flexível</td>
+                <td><span class="check">✓</span>Muito forte em explicações</td>
+                <td><span class="check">✓</span>Bom suporte técnico</td>
+                <td><span class="check">✓</span>Muito forte dentro do editor</td>
+              </tr>
+              <tr>
+                <td>Experiência pronta para startups</td>
+                <td class="devmind-col"><span class="star">★</span>Fluxos pensados para criar negócios digitais</td>
+                <td>Depende da configuração</td>
+                <td>Depende da configuração</td>
+                <td>Depende do caso de uso</td>
+                <td>Mais orientado ao desenvolvimento</td>
+              </tr>
+              <tr>
+                <td>Diferencial</td>
+                <td class="devmind-col"><span class="star">★</span>IA com mentalidade de programador + fundador</td>
+                <td>Versatilidade global</td>
+                <td>Texto longo e análise</td>
+                <td>Integração com ecossistema Google</td>
+                <td>Integração com IDE e repositórios</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="note reveal">
+          Nota: ChatGPT, Claude, Gemini e Copilot são marcas dos seus respetivos proprietários. A comparação acima é uma proposta de posicionamento comercial para a DevMind, não um benchmark técnico oficial.
+        </p>
+      </div>
+    </section>
+
+    <section id="precos">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">Planos</div>
+          <h2 class="section-title">Escolhe o teu nível de poder.</h2>
+          <p class="section-copy">
+            Planos fictícios prontos para apresentação. Podes alterar preços, limites e funcionalidades conforme o modelo de negócio.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card reveal">
+            <h3>Starter</h3>
+            <p>Para estudantes, criadores e developers que querem acelerar tarefas diárias.</p>
+            <div class="price"><strong>€9</strong><span>/mês</span></div>
+            <ul class="benefits">
+              <li><span class="check">✓</span>Geração de código e explicações</li>
+              <li><span class="check">✓</span>Criação de páginas simples</li>
+              <li><span class="check">✓</span>Prompts para produtividade</li>
+              <li><span class="check">✓</span>Histórico básico</li>
+            </ul>
+            <a href="#inicio" class="btn btn-ghost">Começar Starter</a>
+          </article>
+
+          <article class="price-card featured reveal">
+            <span class="popular">Mais popular</span>
+            <h3>Pro Builder</h3>
+            <p>Para quem quer criar produtos digitais, landing pages, automações e sistemas completos.</p>
+            <div class="price"><strong>€29</strong><span>/mês</span></div>
+            <ul class="benefits">
+              <li><span class="check">✓</span>Modo Arquiteto de Software</li>
+              <li><span class="check">✓</span>Landing pages premium</li>
+              <li><span class="check">✓</span>Estratégias de lançamento</li>
+              <li><span class="check">✓</span>Revisão de código e segurança</li>
+              <li><span class="check">✓</span>Templates para SaaS, apps e e-commerce</li>
+            </ul>
+            <a href="#inicio" class="btn btn-primary">Escolher Pro Builder</a>
+          </article>
+
+          <article class="price-card reveal">
+            <h3>Enterprise</h3>
+            <p>Para equipas, agências e empresas que querem workflows privados e automações internas.</p>
+            <div class="price"><strong>Custom</strong><span></span></div>
+            <ul class="benefits">
+              <li><span class="check">✓</span>Workspaces de equipa</li>
+              <li><span class="check">✓</span>Base de conhecimento privada</li>
+              <li><span class="check">✓</span>Integrações personalizadas</li>
+              <li><span class="check">✓</span>Suporte prioritário</li>
+            </ul>
+            <a href="#inicio" class="btn btn-ghost">Falar com vendas</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testemunhos">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">Testemunhos</div>
+          <h2 class="section-title">O que dizem sobre a DevMind.</h2>
+          <p class="section-copy">
+            Feedbacks simulados para demonstrar a perceção do produto. Substitui por testemunhos reais quando tiveres utilizadores ativos.
+          </p>
+        </div>
+
+        <div class="testimonials">
+          <blockquote class="quote reveal">
+            <p>"A DevMind fez-me poupar dias de planeamento. Comecei um projeto e em 2 horas tinha arquitetura, copy e plano de lançamento."</p>
+            <div class="quote-author">
+              <span class="avatar">RM</span>
+              <div>
+                <strong>Rui Martins</strong>
+                <span>Founder @ TechFlow</span>
+              </div>
+            </div>
+          </blockquote>
+
+          <blockquote class="quote reveal">
+            <p>"Finalmente uma IA que pensa como programador e como empreendedor ao mesmo tempo. A DevMind não alucina estratégia."</p>
+            <div class="quote-author">
+              <span class="avatar">SC</span>
+              <div>
+                <strong>Sofia Costa</strong>
+                <span>Full-stack Developer</span>
+              </div>
+            </div>
+          </blockquote>
+
+          <blockquote class="quote reveal">
+            <p>"Uso a DevMind para criar landing pages e sistemas completos. O tempo que perdia a decidir stack e design acabou."</p>
+            <div class="quote-author">
+              <span class="avatar">AN</span>
+              <div>
+                <strong>André Nunes</strong>
+                <span>Indie Hacker</span>
+              </div>
+            </div>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-kicker">FAQ</div>
+          <h2 class="section-title">Perguntas frequentes.</h2>
+          <p class="section-copy">Dúvidas comuns sobre a DevMind, o seu posicionamento e como podes começar a usar.</p>
+        </div>
+
+        <div class="faq-grid reveal">
+          <details>
+            <summary>A DevMind substitui programadores?</summary>
+            <p>Não. A DevMind é uma ferramenta de aceleração. Ela trata do planeamento, estrutura e tarefas repetitivas para que o programador se foque no que realmente importa: decisões criativas, lógica de negócio e qualidade final.</p>
+          </details>
+
+          <details>
+            <summary>Preciso de saber programar para usar a DevMind?</summary>
+            <p>Depende do objetivo. Para usar o modo construtor de landing pages e estratégia de lançamento, não precisas de saber programar. Para usufruir do modo arquiteto de software, recomenda-se conhecimento técnico para validar as sugestões.</p>
+          </details>
+
+          <details>
+            <summary>Posso usar a DevMind para criar um SaaS completo?</summary>
+            <p>Sim. A DevMind é desenhada para ajudar a idealizar, planear, estruturar e gerar partes significativas de um SaaS, desde a base de dados à interface e estratégia de lançamento.</p>
+          </details>
+
+          <details>
+            <summary>Como é diferente do ChatGPT ou do Claude?</summary>
+            <p>Enquanto ChatGPT e Claude são IAs generalistas fantásticas, a DevMind foi pensada especificamente para programadores, criadores e founders. O foco está em gerar produtos, não apenas respostas.</p>
+          </details>
+
+          <details>
+            <summary>A DevMind já está disponível?</summary>
+            <p>A DevMind está em fase de apresentação. Esta página é um modelo de pré-lançamento para validar o conceito e recolher feedback antes do desenvolvimento completo.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box reveal">
+          <h2>Pronto para criar com uma IA que entende de código e de negócio?</h2>
+          <p>Experimenta a DevMind gratuitamente durante 14 dias. Acelerar o teu próximo projeto pode ser tão simples como um prompt bem escrito.</p>
+          <a href="#inicio" class="btn btn-primary" style="padding: 18px 42px; font-size: 1.1rem;">Começar agora ✨</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>&copy; 2025 DevMind AI. Todos os direitos reservados.</span>
+      <div class="footer-links">
+        <a href="#inicio">Início</a>
+        <a href="#features">Funcionalidades</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#comparacao">Comparação</a>
+        <a href="#precos">Preços</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // === Scroll reveal ===
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('active');
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(r => obs.observe(r));
+
+    // === Cursor glow ===
+    const glow = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', (e) => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+
+    // === Mouse follower for feature cards ===
+    document.querySelectorAll('.feature-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mx', x + '%');
+        card.style.setProperty('--my', y + '%');
+      });
+    });
+
+    // === Mobile menu toggle ===
+    const menuBtn = document.getElementById('menuBtn');
+    const nav = document.getElementById('nav');
+    menuBtn.addEventListener('click', () => nav.classList.toggle('open'));
+  </script>
+</body>
+</html>
